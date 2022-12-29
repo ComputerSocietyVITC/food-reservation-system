@@ -1,12 +1,26 @@
-import express from "express";
-const app = express();
-app.use(express.json());
-const PORT = 3000;
-app.get("/", (req, res, next) => {
-  res.status(200).json({
-    message: "Running Node with Express and Typescript",
-  });
-});
-app.listen(PORT, () => {
-  console.log(`Server running on ${PORT}.`);
-});
+var express = require("express");
+const express_graphql = require("express-graphql").graphqlHTTP;
+var { buildSchema } = require("graphql");
+// GraphQL schema
+var schema = buildSchema(`
+    type Query {
+        message: String
+    }
+`);
+// Root resolver
+var root = {
+  message: () => "Hello World!",
+};
+// Create an express server and a GraphQL endpoint
+var app = express();
+app.use(
+  "/graphql",
+  express_graphql({
+    schema: schema,
+    rootValue: root,
+    graphiql: true,
+  })
+);
+app.listen(3000, () =>
+  console.log("Express GraphQL Server Now Running On localhost:3000/graphql")
+);
