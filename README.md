@@ -1,27 +1,22 @@
-# Next.js + Tailwind CSS Example
+# Food Reservation App
 
-This example shows how to use [Tailwind CSS](https://tailwindcss.com/) [(v3.2)](https://tailwindcss.com/blog/tailwindcss-v3-2) with Next.js. It follows the steps outlined in the official [Tailwind docs](https://tailwindcss.com/docs/guides/nextjs).
+An application to simplify your food ordering process saving time. The purpose of this app
+is to provide users with a simple platform to pre-order food before reaching a destination to avoid wait time.
 
-## Deploy your own
+## Technology
 
-Deploy the example using [Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=next-example) or preview live with [StackBlitz](https://stackblitz.com/github/vercel/next.js/tree/canary/examples/with-tailwindcss)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Prisma](https://prisma.io)
+- [Next JS](https://nextjs.org/)
+- [TailwindCSS](https://tailwindcss.com)
+- [GraphQL](https://www.apollographql.com/blog/graphql/basics/what-is-graphql-introduction/)
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https://github.com/vercel/next.js/tree/canary/examples/with-tailwindcss&project-name=with-tailwindcss&repository-name=with-tailwindcss)
+## Important points for consideration
 
-## How to use
-
-Execute [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) with [npm](https://docs.npmjs.com/cli/init), [Yarn](https://yarnpkg.com/lang/en/docs/cli/create/), or [pnpm](https://pnpm.io) to bootstrap the example:
-
-```bash
-npx create-next-app --example with-tailwindcss with-tailwindcss-app
-```
-
-```bash
-yarn create next-app --example with-tailwindcss with-tailwindcss-app
-```
-
-```bash
-pnpm create next-app --example with-tailwindcss with-tailwindcss-app
-```
-
-Deploy it to the cloud with [Vercel](https://vercel.com/new?utm_source=github&utm_medium=readme&utm_campaign=next-example) ([Documentation](https://nextjs.org/docs/deployment)).
+- Develop schema for GraphQL:
+  -- What is Schema ?
+  -- What is a resolver ?
+  -- How to work with GraphQL ?
+- How to integrate stripe API ?
+- How much tech chaos is acceptable for features ?
+- Where do we record our learning resoruces ?
