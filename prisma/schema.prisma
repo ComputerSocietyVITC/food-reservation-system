@@ -10,6 +10,40 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model Buyer {
+  bid                     String         @id @default(cuid())
+  buyer_name              String?
+  total_transaction_value Int?
+  email                   String?
+  saved_meathod           String
+  fav_meathod             String
+  createdAt               DateTime       @default(now())
+  updatedAt               DateTime       @updatedAt
+  Transactions            Transactions[]
+}
+
+model Transactions {
+  tid          String      @id @default(cuid())
+  buyerID      Int?
+  orderOn      DateTime
+  cartValue    Int?
+  customer     Buyer       @relation(fields: [buyerId], references: [bid])
+  buyerId      String
+  createdAt    DateTime    @default(now())
+  updatedAt    DateTime    @updatedAt
+  Discounts    Discounts[]
+  Owner        Owner?      @relation(fields: [ownerOwnerID], references: [OwnerID])
+  ownerOwnerID Int?
+}
+
+model Discounts {
+  couponid      String       @id @default(cuid())
+  transaction   Transactions @relation(fields: [transactionId], references: [tid])
+  transactionId String
+  createdAt     DateTime     @default(now())
+  updatedAt     DateTime     @updatedAt
+}
+
 model Owner {
         OwnerID Int @id
         StoreLocation storelocation
