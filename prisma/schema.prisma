@@ -24,9 +24,9 @@ model Buyer {
 
 model Transactions {
   tid       String      @id @default(cuid())
-  buyerID   Int
+  buyerID   Int?
   orderOn   DateTime
-  cartValue Int
+  cartValue Int?
   customer  Buyer       @relation(fields: [buyerId], references: [bid])
   buyerId   String
   createdAt DateTime    @default(now())
@@ -35,23 +35,13 @@ model Transactions {
 }
 
 model Discounts {
-  couponid      String       @id @default(cuid())
-  transaction   Transactions @relation(fields: [transactionId], references: [tid])
-  transactionId String
-  createdAt     DateTime     @default(now())
-  updatedAt     DateTime     @updatedAt
+  couponid        String       @id @default(cuid())
+  discount_value  Int?
+  item_requirment Int?
+  cart_requirment Int?
+  transaction     Transactions @relation(fields: [transactionId], references: [tid])
+  transactionId   String
+  createdAt       DateTime     @default(now())
+  updatedAt       DateTime     @updatedAt
+  active          Boolean
 }
-
-model User {
-  id    Int    @id @default(autoincrement())
-  posts Post[]
-}
-
-model Post {
-  id       Int  @id @default(autoincrement())
-  author   User @relation(fields: [authorId], references: [id])
-  authorId Int // relation scalar field  (used in the `@relation` attribute above)
-}
-
-// user pk->id
-//post pk->id fk->authID
