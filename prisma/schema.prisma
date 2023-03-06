@@ -35,13 +35,9 @@ model Transactions {
 }
 
 model Discounts {
-  couponid        String       @id @default(cuid())
-  discount_value  Int?
-  item_requirment Int?
-  cart_requirment Int?
-  transaction     Transactions @relation(fields: [transactionId], references: [tid])
-  transactionId   String
-  createdAt       DateTime     @default(now())
-  updatedAt       DateTime     @updatedAt
-  active          Boolean
+  couponid      String       @id @default(cuid())
+  transaction   Transactions @relation(fields: [transactionId], references: [tid])
+  transactionId String
+  createdAt     DateTime     @default(now())
+  updatedAt     DateTime     @updatedAt
 }
