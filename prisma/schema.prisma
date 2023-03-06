@@ -42,16 +42,4 @@ model Discounts {
   updatedAt     DateTime     @updatedAt
 }
 
-model User {
-  id    Int    @id @default(autoincrement())
-  posts Post[]
-}
 
-model Post {
-  id       Int  @id @default(autoincrement())
-  author   User @relation(fields: [authorId], references: [id])
-  authorId Int // relation scalar field  (used in the `@relation` attribute above)
-}
-
-// user pk->id
-//post pk->id fk->authID
