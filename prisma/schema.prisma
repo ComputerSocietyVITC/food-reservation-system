@@ -14,20 +14,7 @@ model Owner {
         OwnerID Int @id
         StoreLocation storelocation
         OwnerName String
-        OwnerNickName String?
-        UPIID String
-        transaction Transaction @relation(fields: [transactionid], references: [TransactionID])
-        transactionid Int
-        disc Discounts @relation(fields: [couponid], references: [CouponID])
-        couponid Int
-        item Items @relation(fields: [itemid], references: [ItemID])
-        itemid Int
-}
-
-enum storelocation {
-        AB1
-        AB2
-        Gazebo
-        AdminBlock
+        OwnerNickName String @unique
+        UPI_ID String
 }
 
