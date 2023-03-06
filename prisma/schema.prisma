@@ -45,11 +45,11 @@ model Discounts {
 }
 
 model Owner {
-        OwnerID Int @id
-        StoreLocation storelocation
-        OwnerName String
-        OwnerNickName String @unique
-        UPI_ID String
-	transactions Transactions[]
+        OwnerID		Int	@id
+        StoreLocation	storelocation
+        OwnerName	String
+        OwnerNickName	String	@unique
+        UPI_ID		String
+	transactions	Transactions[]
 }
 
