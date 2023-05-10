@@ -1,4 +1,3 @@
-// This is your Prisma schema file,
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
 generator client {
@@ -10,28 +9,42 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model Users {
+  userid    String   @id @default(cuid())
+  email     String   @unique
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  contact   Int
+  type      String?
+}
+
+model Items {
+  item_id String @id @default(cuid())
+}
+
 model Buyer {
   bid                     String         @id @default(cuid())
   buyer_name              String?
   total_transaction_value Int?
-  email                   String?
-  saved_meathod           String
-  fav_meathod             String
-  createdAt               DateTime       @default(now())
-  updatedAt               DateTime       @updatedAt
+  saved_method            String?
+  fav_method              String?
+  created_at              DateTime       @default(now())
+  last_purchased_at       DateTime       @updatedAt
   Transactions            Transactions[]
 }
 
 model Transactions {
-  tid       String      @id @default(cuid())
-  buyerID   Int?
-  orderOn   DateTime
-  cartValue Int?
-  customer  Buyer       @relation(fields: [buyerId], references: [bid])
-  buyerId   String
-  createdAt DateTime    @default(now())
-  updatedAt DateTime    @updatedAt
-  Discounts Discounts[]
+  tid          String      @id @default(cuid())
+  buyerID      Int?
+  orderOn      DateTime
+  cartValue    Int?
+  customer     Buyer       @relation(fields: [buyerId], references: [bid])
+  buyerId      String
+  created_at   DateTime    @default(now())
+  updated_at   DateTime    @updatedAt
+  Discounts    Discounts[]
+  Owner        Owner?      @relation(fields: [ownerOwnerID], references: [OwnerID])
+  ownerOwnerID Int?
 }
 
 model Discounts {
@@ -40,4 +53,13 @@ model Discounts {
   transactionId String
   createdAt     DateTime     @default(now())
   updatedAt     DateTime     @updatedAt
+}
+
+model Owner {
+  OwnerID       Int            @id
+  StoreLocation String
+  OwnerName     String
+  OwnerNickName String         @unique
+  UPI_ID        String
+  Transactions  Transactions[]
 }
